@@ -1,0 +1,80 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: analyses
+    // Document ID: auto-generated
+    // Fields:
+    //   - userId: string (required) - Owner UID
+    //   - title: string (required, max 200)
+    //   - verdict: string (required, enum: REAL, FAKE, PARTIALLY TRUE)
+    //   - confidence: number (required, 0-100)
+    //   - explanation: string (required, max 5000)
+    //   - factSummary: string (required, max 2000)
+    //   - sourceScore: number (required, 0-100)
+    //   - timestamp: number (required)
+    //   - url: string (optional)
+    //   - text: string (optional)
+    //
+    // Collection: users/{userId}/stats
+    // Document ID: current
+    // Fields:
+    //   - totalChecked: number
+    //   - realCount: number
+    //   - fakeCount: number
+    //   - partialCount: number
+    //   - accuracy: number
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isValidAnalysis(data) {
+      return data.userId == request.auth.uid &&
+             data.title is string && data.title.size() <= 200 &&
+             data.verdict in ['REAL', 'FAKE', 'PARTIALLY TRUE'] &&
+             data.confidence is number && data.confidence >= 0 && data.confidence <= 100 &&
+             data.explanation is string && data.explanation.size() <= 5000 &&
+             data.factSummary is string && data.factSummary.size() <= 2000 &&
+             data.sourceScore is number && data.sourceScore >= 0 && data.sourceScore <= 100 &&
+             data.timestamp is number;
+    }
+
+    function isValidStats(data) {
+      return data.totalChecked is number &&
+             data.realCount is number &&
+             data.fakeCount is number &&
+             data.partialCount is number &&
+             data.accuracy is number;
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /analyses/{analysisId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && isValidAnalysis(request.resource.data);
+      allow update, delete: if false; // Analyses are immutable for history integrity
+    }
+
+    match /users/{userId}/stats/current {
+      allow read: if isOwner(userId);
+      allow write: if isOwner(userId) && isValidStats(request.resource.data);
+    }
+  }
+}

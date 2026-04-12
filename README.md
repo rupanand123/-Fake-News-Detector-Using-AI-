@@ -1,11 +1,98 @@
-<div align="center">
+# 🛡️ Truth Lens: AI-Powered Fact Verification
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+![Truth Lens Hero](https://picsum.photos/seed/truth-lens-hero/1200/400?blur=2)
 
-  <h1>Built with AI Studio</h2>
+**Truth Lens** is a production-ready, full-stack AI platform designed to combat misinformation. By leveraging the power of **Google Gemini AI** and real-time **Google Search Grounding**, Truth Lens provides instant, authoritative verdicts on news snippets, URLs, and social media graphics.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+---
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+## ✨ Key Features
 
-</div>
+### 🚀 High-Performance Hero Section
+*   **Scroll-Triggered Canvas**: A cinematic animation that responds to user interaction, symbolizing the transformation from raw data to verified truth.
+*   **Futuristic Typography**: Elegant text sequences powered by Framer Motion.
+
+### 🔍 Advanced News Analyzer
+*   **Multi-Input Support**: Analyze news via raw text, direct URLs, or image uploads (screenshots/posters).
+*   **AI Reasoning**: Detailed explanations of *why* a news item is flagged, identifying linguistic patterns and logical fallacies.
+*   **Fact Summaries**: Concise, verified alternatives to the analyzed misinformation.
+
+### 📰 Editorial Design System
+*   **Newspaper Effects**: Digital "paper grain" texture, halftone image filters, and classic drop-cap typography.
+*   **Futuristic Editorial**: A blend of high-end dark mode aesthetics with traditional broadsheet layouts.
+*   **Vertical Rail Labels**: Systematic margin labels for a technical, authoritative feel.
+
+### 📊 User Dashboard
+*   **Verification History**: Securely store and search through your past analyses using Firebase Firestore.
+*   **Accuracy Insights**: Visual statistics on detection reliability and source trust scores.
+*   **Real-time Stats**: Track total checks and real-vs-fake ratios.
+
+---
+
+## 📸 App Screenshots
+
+| Hero Section | News Analyzer | User Dashboard |
+| :---: | :---: | :---: |
+| ![Hero](https://picsum.photos/seed/tl-hero/400/300) | ![Analyzer](https://picsum.photos/seed/tl-analyzer/400/300) | ![Dashboard](https://picsum.photos/seed/tl-dash/400/300) |
+
+---
+
+## 🤖 AI & Data Infrastructure
+
+### Models Used
+*   **Gemini 3 Flash**: Our primary reasoning engine, optimized for fast linguistic analysis and sentiment detection.
+*   **Google Search Grounding**: Every analysis is cross-referenced against millions of live, verified sources to ensure factual accuracy.
+
+### Data Handling
+*   **Firebase Auth**: Secure Google-based authentication.
+*   **Firestore**: Real-time, owner-only data persistence for analysis history and user statistics.
+
+---
+
+## 🛠️ Tech Stack
+
+*   **Frontend**: [React 18](https://reactjs.org/), [Vite](https://vitejs.dev/), [TypeScript](https://www.typescriptlang.org/)
+*   **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+*   **Animations**: [Framer Motion](https://www.framer.com/motion/)
+*   **AI SDK**: [@google/genai](https://www.npmjs.com/package/@google/genai)
+*   **Backend**: [Firebase](https://firebase.google.com/) (Authentication & Firestore)
+*   **Icons**: [Lucide React](https://lucide.dev/)
+*   **Components**: [shadcn/ui](https://ui.shadcn.com/)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+*   Node.js 18+
+*   A Gemini API Key (configured in environment)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/truth-lens.git
+   cd truth-lens
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env` file based on `.env.example` and add your `GEMINI_API_KEY`.
+
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+---
+
+## ⚖️ License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+*Built with ❤️ to protect the truth in the digital age.*

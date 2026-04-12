@@ -1,0 +1,45 @@
+{
+  "entities": {
+    "AnalysisResult": {
+      "title": "AnalysisResult",
+      "description": "A record of a news analysis performed by a user",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string", "description": "The UID of the user who performed the analysis" },
+        "title": { "type": "string", "description": "The title of the news item" },
+        "verdict": { "type": "string", "enum": ["REAL", "FAKE", "PARTIALLY TRUE"] },
+        "confidence": { "type": "number", "description": "Confidence score from 0-100" },
+        "explanation": { "type": "string", "description": "Detailed AI explanation" },
+        "factSummary": { "type": "string", "description": "Summary of actual facts" },
+        "sourceScore": { "type": "number", "description": "Reliability score of the source" },
+        "timestamp": { "type": "number", "description": "Unix timestamp of the analysis" },
+        "url": { "type": "string", "description": "Optional source URL" },
+        "text": { "type": "string", "description": "Optional input text" }
+      },
+      "required": ["userId", "title", "verdict", "confidence", "explanation", "factSummary", "sourceScore", "timestamp"]
+    },
+    "UserStats": {
+      "title": "UserStats",
+      "description": "Aggregated statistics for a user",
+      "type": "object",
+      "properties": {
+        "totalChecked": { "type": "number" },
+        "realCount": { "type": "number" },
+        "fakeCount": { "type": "number" },
+        "partialCount": { "type": "number" },
+        "accuracy": { "type": "number" }
+      },
+      "required": ["totalChecked", "realCount", "fakeCount", "partialCount", "accuracy"]
+    }
+  },
+  "firestore": {
+    "/analyses/{analysisId}": {
+      "schema": "AnalysisResult",
+      "description": "Collection of all news analyses"
+    },
+    "/users/{userId}/stats/current": {
+      "schema": "UserStats",
+      "description": "User specific statistics"
+    }
+  }
+}
