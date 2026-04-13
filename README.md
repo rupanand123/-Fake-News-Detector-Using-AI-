@@ -1,6 +1,6 @@
 # 🛡️ Truth Lens: AI-Powered Fact Verification
 
-![Truth Lens Banner](https://picsum.photos/seed/truth-lens-banner/1200/400?blur=1)
+![Truth Lens Banner](https://images.unsplash.com/photo-1504711432869-0fd1078ee23b?auto=format&fit=crop&q=80&w=1200&h=400)
 
 **Truth Lens** is a production-ready, full-stack AI platform designed to combat misinformation. By leveraging the power of **Google Gemini AI** and real-time **Google Search Grounding**, Truth Lens provides instant, authoritative verdicts on news snippets, URLs, and social media graphics.
 
@@ -31,9 +31,14 @@
 
 ## 📸 App Screenshots
 
-| Hero Section | News Analyzer | User Dashboard |
-| :---: | :---: | :---: |
-| ![Hero Section](https://picsum.photos/seed/ai-verification/600/400) | ![News Analyzer](https://picsum.photos/seed/news-analysis/600/400) | ![User Dashboard](https://picsum.photos/seed/data-dashboard/600/400) |
+### 1. Hero Experience
+![Hero Section](./public/screenshots/hero.png)
+
+### 2. News Analysis Engine
+![News Analyzer](./public/screenshots/analyzer.png)
+
+### 3. Personal Insights Dashboard
+![User Dashboard](./public/screenshots/dashboard.png)
 
 ---
 
